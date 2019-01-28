@@ -1,14 +1,14 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { StorageService, Item } from '../services/storage.service';
 import { Platform, ToastController, IonList } from '@ionic/angular';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-add',
+  templateUrl: './add.page.html',
+  styleUrls: ['./add.page.scss'],
 })
-export class HomePage {
-  
+export class AddPage implements OnInit {
+
   items: Item[] = [];
  
   newItem: Item = <Item>{};
@@ -32,36 +32,15 @@ export class HomePage {
       this.loadItems(); // Or add it to the array directly
     });
   }
- 
+  
+  
   // READ
   loadItems() {
     this.storageService.getItems().then(items => {
       this.items = items;
     });
   }
- 
-  // UPDATE
-  updateItem(item: Item) {
-    item.title = `UPDATED: ${item.title}`;
-    item.modified = Date.now();
- 
-    this.storageService.updateItem(item).then(item => {
-      this.showToast('Employee profile updated!');
-      this.mylist.closeSlidingItems(); // Fix or sliding is stuck afterwards
-      this.loadItems(); // Or update it inside the array directly
-    });
-  }
- 
-  // DELETE
-  deleteItem(item: Item) {
-    this.storageService.deleteItem(item.id).then(item => {
-      this.showToast('Employee profile deleted!');
-      this.mylist.closeSlidingItems(); // Fix or sliding is stuck afterwards
-      this.loadItems(); // Or splice it from the array directly
-    });
-  }
- 
-  // Helper
+  
   async showToast(msg) {
     const toast = await this.toastController.create({
       message: msg,
@@ -71,6 +50,9 @@ export class HomePage {
       //duration: 2000
     });
     toast.present();
+  }
+  
+  ngOnInit() {
   }
 
 }

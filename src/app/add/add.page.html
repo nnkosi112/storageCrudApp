@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot = "start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Add New User</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+<ion-item>
+    <ion-label position="fixed">Title</ion-label>
+    <ion-input name="title" [(ngModel)]="newItem.title" required></ion-input>
+  </ion-item>
+ 
+  <ion-item>
+    <ion-label position="fixed">Names</ion-label>
+    <ion-input name="names" [(ngModel)]="newItem.names" required></ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label position="fixed">Department</ion-label>
+    <ion-input name="department" [(ngModel)]="newItem.department" required></ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label position="fixed">email</ion-label>
+    <ion-input name="email" [(ngModel)]="newItem.email" required></ion-input>
+  </ion-item>
+ 
+  <ion-item>
+    <ion-label position="fixed">Employee No</ion-label>
+    <ion-input name="empno" [(ngModel)]="newItem.names" required></ion-input>
+  </ion-item>
+  
+  <ion-button expand="full" (click)="addItem()">Add User!</ion-button>
+
+  </ion-content>
+<ion-toolbar>
+   <ion-button slot = "end" href= "/">Back Home</ion-button>
+</ion-toolbar>

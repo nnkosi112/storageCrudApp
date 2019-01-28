@@ -1,5 +1,7 @@
 {
   "name": "storageCrudApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
