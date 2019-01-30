@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
- 
+import { Http } from '@angular/http';
+import { filter } from 'rxjs/operators';
+
 export interface Item {
   id: number,
   title: string,
@@ -74,5 +76,14 @@ export class StorageService {
       }
       return this.storage.set(ITEMS_KEY, toKeep);
     });
-  }  
+  }
+
+  //SEARCH
+  filterItems(searchTerm){
+
+       /* return this.items.filter((items) => {
+            return item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+        });*/     
+
+    }  
 }

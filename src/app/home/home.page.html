@@ -12,7 +12,7 @@
 <ion-content padding>
   <!--The world is your oyster.
   <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>-->
-  
+  <form #AddEmpForm="ngForm">  
   <ion-item>
     <ion-label position="fixed">Title</ion-label>
     <ion-input name="title" [(ngModel)]="newItem.title" required></ion-input>
@@ -35,11 +35,11 @@
  
   <ion-item>
     <ion-label position="fixed">Employee No</ion-label>
-    <ion-input name="empno" [(ngModel)]="newItem.names" required></ion-input>
+    <ion-input name="empno" [(ngModel)]="newItem.empno" type="tel" required></ion-input>
   </ion-item>
   
-  <ion-button expand="full" (click)="addItem()">Add User!</ion-button>
-  
+  <ion-button expand="full" ion-button [disabled]="!AddEmpForm.form.valid" (click)="addItem()">Add Employee!</ion-button>
+</form>  
   <ion-list #mylist>
  
     <ion-list-header>

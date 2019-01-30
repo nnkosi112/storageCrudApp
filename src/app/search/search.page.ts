@@ -1,6 +1,7 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { StorageService, Item } from '../services/storage.service';
 import { Platform, ToastController, IonList } from '@ionic/angular';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search',
@@ -14,6 +15,10 @@ export class SearchPage implements OnInit {
  
   @ViewChild('mylist')mylist: IonList;
   
+  /*constructor(public navCtrl: NavController, private storageService: StorageService) {
+        this.searchControl = new FormControl();
+    }*/
+    
   constructor(private storageService: StorageService, private plt: Platform, private toastController: ToastController) {
     this.plt.ready().then(() => {
       this.loadItems();
@@ -37,6 +42,30 @@ export class SearchPage implements OnInit {
     });
     toast.present();
   }
+  /*ionViewDidLoad() {
+
+        this.setFilteredItems();
+
+        this.searchControl.valueChanges.debounceTime(700).subscribe(search => {
+
+            this.searching = false;
+            this.setFilteredItems();
+
+        });
+
+
+    }
+  
+  onSearchInput(){
+        this.searching = true;
+    }
+
+    setFilteredItems() {
+
+        this.items = this.dataService.filterItems(this.searchTerm);
+
+    }*/
+  
   ngOnInit() {
   }
 

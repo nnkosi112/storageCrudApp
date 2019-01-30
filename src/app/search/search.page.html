@@ -3,13 +3,21 @@
     <ion-buttons slot = "start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Search Employee</ion-title>
-    <ion-searchbar placeholder="Filter Schedules"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-
+  <ion-title>Search Employee</ion-title>
+    <ion-searchbar placeholder="Filter Employees"[(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"></ion-searchbar>
+    
+    <div *ngIf="searching" class="spinner-container">
+        <ion-spinner></ion-spinner>
+    </div>
+    <ion-list>
+        <ion-item *ngFor="let item of items">
+            {{item.title}}
+        </ion-item>
+    </ion-list>
 </ion-content>
 <ion-toolbar>
    <ion-button slot = "end" href= "/">Back Home</ion-button>
